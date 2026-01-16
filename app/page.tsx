@@ -373,14 +373,15 @@ export default function Portfolio() {
           {/* Image Works */}
           <div className="portfolio-grid">
             {portfolio.map((item, index) => (
-              <div
-                key={index}
-                className="portfolio-item"
-                onClick={() => setModalImage(item.img)}
-              >
-                <img src={item.img} alt={item.title} />
-                <div className="portfolio-overlay">
-                  <span>{item.category}</span>
+              <div key={index} className="portfolio-card">
+                <div
+                  className="portfolio-image"
+                  onClick={() => setModalImage(item.img)}
+                >
+                  <img src={item.img} alt={item.title} />
+                </div>
+                <div className="portfolio-info">
+                  <span className="portfolio-tag">{item.category}</span>
                   <h4>{item.title}</h4>
                 </div>
               </div>

@@ -985,57 +985,56 @@ h1, h2, h3, h4, h5, h6 {
   gap: 2rem;
 }
 
-.portfolio-item {
-  position: relative;
+.portfolio-card {
+  background: rgba(255,255,255,0.05);
   border-radius: 20px;
   overflow: hidden;
+  transition: all 0.4s ease;
+}
+
+.portfolio-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 30px 60px rgba(0,0,0,0.3);
+}
+
+.portfolio-image {
+  position: relative;
   aspect-ratio: 4/3;
+  overflow: hidden;
   cursor: pointer;
 }
 
-.portfolio-item.large {
-  grid-column: span 2;
-  aspect-ratio: 2/1;
-}
-
-.portfolio-item img {
+.portfolio-image img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   transition: transform 0.7s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
-.portfolio-item:hover img {
-  transform: scale(1.1);
+.portfolio-card:hover .portfolio-image img {
+  transform: scale(1.08);
 }
 
-.portfolio-overlay {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, transparent 60%);
-  opacity: 0;
-  transition: opacity 0.4s ease;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  padding: 2rem;
+.portfolio-info {
+  padding: 1.25rem 1.5rem;
 }
 
-.portfolio-item:hover .portfolio-overlay {
-  opacity: 1;
-}
-
-.portfolio-overlay span {
-  font-size: 0.7rem;
+.portfolio-tag {
+  display: inline-block;
+  font-size: 0.65rem;
   text-transform: uppercase;
   letter-spacing: 0.15em;
   color: var(--accent);
+  background: rgba(201, 166, 107, 0.2);
+  padding: 0.35rem 0.7rem;
+  border-radius: 50px;
   margin-bottom: 0.5rem;
 }
 
-.portfolio-overlay h4 {
-  font-size: 1.5rem;
+.portfolio-info h4 {
+  font-size: 1.25rem;
   font-weight: 500;
+  color: var(--cream);
 }
 
 /* Portfolio Videos */
@@ -1392,7 +1391,7 @@ h1, h2, h3, h4, h5, h6 {
 @media (max-width: 1024px) {
   .hero-grid {
     grid-template-columns: 1fr;
-    gap: 4rem;
+    gap: 3rem;
     text-align: center;
   }
 
@@ -1401,12 +1400,13 @@ h1, h2, h3, h4, h5, h6 {
   }
 
   .hero-image-frame {
-    max-width: 320px;
+    max-width: 300px;
     margin: 0 auto;
   }
 
-  .hero-desc {
-    margin: 0 auto 2.5rem;
+  .hero-desc,
+  .hero-desc-secondary {
+    margin: 0 auto 1.5rem;
   }
 
   .floating-tag {
@@ -1436,28 +1436,28 @@ h1, h2, h3, h4, h5, h6 {
     grid-template-columns: repeat(3, 1fr);
   }
 
-  .showcase-grid {
-    grid-template-columns: 1fr;
-    gap: 2rem;
-  }
-
   .portfolio-grid {
     grid-template-columns: repeat(2, 1fr);
-  }
-
-  .portfolio-item.large {
-    grid-column: span 1;
-    aspect-ratio: 4/3;
+    gap: 1.5rem;
   }
 
   .portfolio-videos {
     grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+
+  .contact-grid {
+    gap: 3rem;
   }
 }
 
 @media (max-width: 768px) {
   .nav {
-    padding: 1.25rem 1.5rem;
+    padding: 1rem 1.25rem;
+  }
+
+  .nav-logo {
+    font-size: 1.1rem;
   }
 
   .nav-links {
@@ -1473,10 +1473,103 @@ h1, h2, h3, h4, h5, h6 {
   .experience,
   .skills,
   .portfolio,
-  .showcase,
   .contact {
-    padding-left: 1.5rem;
-    padding-right: 1.5rem;
+    padding: 4rem 1.25rem;
+  }
+
+  .hero {
+    padding-top: 5rem;
+    min-height: auto;
+  }
+
+  .hero-grid {
+    gap: 2rem;
+  }
+
+  .hero-image-frame {
+    max-width: 260px;
+    border-radius: 180px 180px 30px 30px;
+  }
+
+  .hero-decoration {
+    top: -20px;
+    right: -20px;
+    width: 50px;
+    height: 50px;
+  }
+
+  .hero-title {
+    font-size: clamp(2.2rem, 10vw, 3.5rem);
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-eyebrow {
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .hero-eyebrow span {
+    font-size: 0.65rem;
+  }
+
+  .hero-desc {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .hero-desc-secondary {
+    font-size: 0.9rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-cta {
+    padding: 0.875rem 1.75rem;
+    font-size: 0.85rem;
+  }
+
+  .marquee-section {
+    padding: 2rem 0;
+  }
+
+  .marquee-content span {
+    font-size: 1.1rem;
+  }
+
+  .video-wrapper {
+    border-radius: 16px;
+  }
+
+  .play-btn {
+    width: 70px;
+    height: 70px;
+  }
+
+  .play-btn svg {
+    width: 22px;
+    height: 22px;
+  }
+
+  .section-header {
+    margin-bottom: 2.5rem;
+  }
+
+  .section-title {
+    font-size: clamp(2rem, 8vw, 3rem);
+  }
+
+  .exp-card {
+    padding: 1.75rem;
+  }
+
+  .exp-number {
+    font-size: 3rem;
+    top: 1.5rem;
+    right: 1.5rem;
+  }
+
+  .exp-card h3 {
+    font-size: 1.4rem;
   }
 
   .skills-icons-grid {
@@ -1485,12 +1578,13 @@ h1, h2, h3, h4, h5, h6 {
   }
 
   .skill-icon-card {
-    padding: 1.5rem 1rem;
+    padding: 1.25rem 1rem;
   }
 
   .skill-icon-wrapper {
-    width: 50px;
-    height: 50px;
+    width: 48px;
+    height: 48px;
+    margin-bottom: 0.75rem;
   }
 
   .skill-icon-wrapper svg {
@@ -1498,35 +1592,117 @@ h1, h2, h3, h4, h5, h6 {
     height: 22px;
   }
 
-  .hero-desc-secondary {
-    margin: 0 auto 2rem;
+  .skill-icon-label {
+    font-size: 0.8rem;
   }
 
-  .hero {
-    padding-top: 6rem;
+  .skills-intro h3 {
+    font-size: 1.75rem;
   }
 
-  .hero-title {
-    font-size: clamp(2.5rem, 12vw, 4rem);
+  .skills-intro p {
+    font-size: 0.95rem;
   }
 
   .portfolio-grid {
     grid-template-columns: 1fr;
+    gap: 1.25rem;
   }
 
   .portfolio-videos {
     grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+
+  .portfolio-video-wrapper {
+    aspect-ratio: 9/14;
+  }
+
+  .portfolio-play-btn {
+    width: 60px;
+    height: 60px;
+  }
+
+  .portfolio-play-btn svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  .contact {
+    padding: 5rem 1.25rem;
+  }
+
+  .contact-starburst {
+    width: 60px;
+    height: 60px;
+  }
+
+  .contact-title {
+    font-size: clamp(2.5rem, 12vw, 4rem);
+  }
+
+  .contact-subtitle {
+    font-size: 1rem;
+    margin-bottom: 2.5rem;
   }
 
   .contact-grid {
     flex-direction: column;
-    gap: 2rem;
+    gap: 1.5rem;
+  }
+
+  .contact-item a {
+    font-size: 1rem;
+  }
+
+  .contact-cta {
+    padding: 1rem 2rem;
+    font-size: 0.9rem;
   }
 
   .footer {
     flex-direction: column;
     gap: 1.5rem;
     text-align: center;
-    padding: 2rem 1.5rem;
+    padding: 1.5rem 1.25rem;
+  }
+
+  .footer-social {
+    gap: 1rem;
+  }
+
+  .footer-social-link {
+    width: 40px;
+    height: 40px;
+  }
+
+  .modal {
+    padding: 1rem;
+  }
+
+  .modal-close {
+    top: 1rem;
+    right: 1rem;
+    width: 40px;
+    height: 40px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-image-frame {
+    max-width: 220px;
+  }
+
+  .skills-icons-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.75rem;
+  }
+
+  .skill-icon-card {
+    padding: 1rem 0.75rem;
+  }
+
+  .contact-grid {
+    gap: 1.25rem;
   }
 }
