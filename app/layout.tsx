@@ -2,11 +2,14 @@ import type { Metadata } from 'next'
 import './globals.css'
 
 export const metadata: Metadata = {
-  title: 'Alefiyah Abbas | Writer • SEO Specialist • Digital Storyteller',
+  title: 'Alefiyah Abbas',
   description: 'Creative portfolio of Alefiyah Abbas - Writer, SEO Specialist, and Digital Media Strategist helping brands grow through content and digital storytelling.',
   keywords: ['writer', 'SEO specialist', 'digital media strategist', 'content creator', 'social media', 'copywriter'],
+  icons: {
+    icon: '/favicon.svg',
+  },
   openGraph: {
-    title: 'Alefiyah Abbas | Creative Portfolio',
+    title: 'Alefiyah Abbas',
     description: 'Writer, SEO Specialist & Digital Storyteller',
     type: 'website',
   },
